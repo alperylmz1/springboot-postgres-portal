@@ -33,6 +33,17 @@ public class CustomerController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    
+    @GetMapping("/customers/{id}")
+    public ResponseEntity<Customer> getCustomerById(@PathVariable("id") long id){
+        Optional<Customer> customerData = customerRepository.findById(id);
+        if (customerData.isPresent()){
+            return new ResponseEntity<>(customerData.get() , HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @PostMapping("/customers")
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer){
