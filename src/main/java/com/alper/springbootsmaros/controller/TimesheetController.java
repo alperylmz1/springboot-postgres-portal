@@ -71,7 +71,7 @@ public class TimesheetController {
     @PostMapping("/timesheets")
     public ResponseEntity<Timesheet> createTimesheet(@RequestBody Timesheet timesheet){
         try {
-            Timesheet _timesheet = timesheetRepository.save(new Timesheet(timesheet.getUserID(),timesheet.getTimesheetdate(),timesheet.getDuration(),timesheet.getLocation(),timesheet.getTaskID(),timesheet.getDescription() , timesheet.getCreateDate() , timesheet.getCreateUser()));
+            Timesheet _timesheet = timesheetRepository.save(new Timesheet(timesheet.getUserID(),timesheet.getTimesheetdate(),timesheet.getDuration(),timesheet.getLocation(),timesheet.getTaskID(), timesheet.getClientID(),timesheet.getDescription() , timesheet.getCreateDate() , timesheet.getCreateUser()));
             return new ResponseEntity<>(_timesheet , HttpStatus.CREATED);
         }catch (Exception e){
             return new ResponseEntity<>(null , HttpStatus.INTERNAL_SERVER_ERROR);
@@ -94,11 +94,12 @@ public class TimesheetController {
         Optional<Timesheet> timesheetData = timesheetRepository.findById(id);
         if (timesheetData.isPresent()){
             Timesheet _timesheet = timesheetData.get();
-            _timesheet.setTaskID(timesheet.getUserID());
+            _timesheet.setUserID(timesheet.getUserID());
             _timesheet.setTimesheetdate(timesheet.getTimesheetdate());
             _timesheet.setDuration(timesheet.getDuration());
             _timesheet.setLocation(timesheet.getLocation());
             _timesheet.setTaskID(timesheet.getTaskID());
+            _timesheet.setClientID(timesheet.getClientID());
             _timesheet.setDescription(timesheet.getDescription());
             _timesheet.setCreateDate(timesheet.getCreateDate());
             _timesheet.setCreateUser(timesheet.getCreateUser());
