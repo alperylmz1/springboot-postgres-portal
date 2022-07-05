@@ -27,6 +27,9 @@ public class Timesheet {
     @Column(name = "taskID")
     private  long taskID;
 
+    @Column(name = "clientID")
+    private long clientID;
+
     @Column(name = "description")
     private String description;
 
@@ -39,13 +42,14 @@ public class Timesheet {
     public Timesheet(){
     }
 
-    public Timesheet(long userID, Date timesheetdate, double duration, String location, long taskID, String description , Date createDate, String createUser) {
+    public Timesheet(long userID, Date timesheetdate, double duration, String location, long taskID, long clientID , String description , Date createDate, String createUser) {
         //this.id = id;
         this.userID = userID;
         this.timesheetdate = timesheetdate;
         this.duration = duration;
         this.location = location;
         this.taskID = taskID;
+        this.clientID = clientID;
         this.description = description;
         this.createDate = createDate;
         this.createUser = createUser;
@@ -100,6 +104,15 @@ public class Timesheet {
         this.taskID = taskID;
     }
 
+    public long getClientID() {
+        return clientID;
+    }
+
+    public void setClientID(long clientID) {
+        this.clientID = clientID;
+    }
+
+
     public String getDescription() {
         return description;
     }
@@ -133,6 +146,7 @@ public class Timesheet {
                 ", duration=" + duration +
                 ", location='" + location + '\'' +
                 ", taskID=" + taskID +
+                ", clientID=" + clientID +
                 ", createDate=" + createDate +
                 ", createUser='" + createUser + '\'' +
                 '}';
