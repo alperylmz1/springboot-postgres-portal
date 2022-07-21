@@ -13,4 +13,7 @@ public interface TimesheetRepository extends JpaRepository<Timesheet , Long> {
 
     @Query("select p from Timesheet p where p.userID =?1")
     List<Timesheet> findAllByUserId(Long userId);
+    
+    @Query("SELECT u FROM Timesheet u where MONTH(u.timesheetdate) = ?1")
+    List<Timesheet> findAllByMonth(Integer month);
 }
