@@ -110,6 +110,23 @@ public class TimesheetController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    
+    @GetMapping("/timesheets/date/{month}")
+    public ResponseEntity<List<Timesheet>> findByMonth(@PathVariable("month") Integer month){
+        try {
+            List<Timesheet> timesheets = timesheetRepository.findAllByMonth(month);
+
+            if (timesheets.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            else{
+                return new ResponseEntity<>(timesheets , HttpStatus.OK);
+            }
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
 
     @DeleteMapping("/timesheets/{id}")
     public ResponseEntity<HttpStatus> deleteTimesheet(@PathVariable("id") long id){
