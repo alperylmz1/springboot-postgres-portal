@@ -34,13 +34,13 @@ public class GoogleFilter implements Filter {
         HttpServletResponse res = null;
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         res = (HttpServletResponse) servletResponse;
-        /*
+        
         res.setHeader("Access-Control-Allow-Origin", "*");
         //res.setHeader("Access-Control-Allow-Credentials", "true");
         res.setHeader("Access-Control-Allow-Methods", "POST, GET, HEAD, OPTIONS");
         res.setHeader("Access-Control-Allow-Headers", "Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers , Google-Token");
         res.setHeader("Access-Control-Max-Age" , "86400");
-        */
+        
         if ("OPTIONS".equalsIgnoreCase(req.getMethod())) {
             res.setStatus(200);
         }
