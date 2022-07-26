@@ -9,7 +9,7 @@ import java.util.Date;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(name = "email")
@@ -35,7 +35,7 @@ public class User {
     }
 
 
-    public User(String email, String name, String status, String role, Date createDate, String createUser) {
+    public User(long id, String email, String name, String status, String role, Date createDate, String createUser) {
         this.id = id;
         this.email = email;
         this.name = name;
@@ -51,9 +51,9 @@ public class User {
         return id;
     }
 
-    /*public void setId(long id) {
+    public void setId(long id) {
         this.id = id;
-    }*/
+    }
 
     public String getEmail() {
         return email;
