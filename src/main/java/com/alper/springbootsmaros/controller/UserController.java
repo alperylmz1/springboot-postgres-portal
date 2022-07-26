@@ -41,7 +41,7 @@ public class UserController {
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         try {
-            User _user = userRepository.save(new User(user.getEmail(), user.getName(), user.getStatus(), user.getRole(), user.getCreateDate(), user.getCreateUser()));
+            User _user = userRepository.save(new User(user.getId(), user.getEmail(), user.getName(), user.getStatus(), user.getRole(), user.getCreateDate(), user.getCreateUser()));
             return new ResponseEntity<>(_user, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -79,6 +79,7 @@ public class UserController {
         Optional<User> userData = userRepository.findById(id);
         if (userData.isPresent()){
             User _user = userData.get();
+            _user.setId(user.getId());
             _user.setEmail(user.getEmail());
             _user.setName(user.getName());
             _user.setStatus(user.getStatus());
