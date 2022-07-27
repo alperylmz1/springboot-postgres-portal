@@ -37,7 +37,7 @@ public class GoogleFilter implements Filter {
         
         res.setHeader("Access-Control-Allow-Origin", "*");
         //res.setHeader("Access-Control-Allow-Credentials", "true");
-        res.setHeader("Access-Control-Allow-Methods", "POST, GET, HEAD, OPTIONS, DELETE");
+        res.setHeader("Access-Control-Allow-Methods", "POST, GET, HEAD, OPTIONS, DELETE, PUT");
         res.setHeader("Access-Control-Allow-Headers", "Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers , Google-Token");
         res.setHeader("Access-Control-Max-Age" , "86400");
         
