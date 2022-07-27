@@ -10,7 +10,7 @@ public class User {
 
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private BigInt id;
 
     @Column(name = "email")
     private String email;
@@ -35,7 +35,7 @@ public class User {
     }
 
 
-    public User(long id, String email, String name, String status, String role, Date createDate, String createUser) {
+    public User(BigInt id, String email, String name, String status, String role, Date createDate, String createUser) {
         this.id = id;
         this.email = email;
         this.name = name;
@@ -47,11 +47,11 @@ public class User {
 
 
 
-    public long getId() {
+    public BigInt getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(BigInt id) {
         this.id = id;
     }
 
