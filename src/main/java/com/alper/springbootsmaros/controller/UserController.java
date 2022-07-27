@@ -65,7 +65,7 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<User> getUsersById(@PathVariable("id") long id) {
+    public ResponseEntity<User> getUsersById(@PathVariable("id") BigInt id) {
         Optional<User> userData = userRepository.findById(id);
         if (userData.isPresent()) {
             return new ResponseEntity<>(userData.get(), HttpStatus.OK);
@@ -75,7 +75,7 @@ public class UserController {
     }
 
     @PutMapping("/users/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable("id") long id , @RequestBody User user){
+    public ResponseEntity<User> updateUser(@PathVariable("id") BigInt id , @RequestBody User user){
         Optional<User> userData = userRepository.findById(id);
         if (userData.isPresent()){
             User _user = userData.get();
@@ -105,7 +105,7 @@ public class UserController {
     }
 
     @DeleteMapping("/users/{id}")
-    public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") long id){
+    public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") BigInt id){
         try {
             userRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
