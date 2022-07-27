@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.math.BigInteger;
 
 @CrossOrigin
 @RestController
@@ -65,7 +66,7 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<User> getUsersById(@PathVariable("id") BigInt id) {
+    public ResponseEntity<User> getUsersById(@PathVariable("id") BigInteger id) {
         Optional<User> userData = userRepository.findById(id);
         if (userData.isPresent()) {
             return new ResponseEntity<>(userData.get(), HttpStatus.OK);
@@ -75,7 +76,7 @@ public class UserController {
     }
 
     @PutMapping("/users/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable("id") BigInt id , @RequestBody User user){
+    public ResponseEntity<User> updateUser(@PathVariable("id") BigInteger id , @RequestBody User user){
         Optional<User> userData = userRepository.findById(id);
         if (userData.isPresent()){
             User _user = userData.get();
@@ -105,7 +106,7 @@ public class UserController {
     }
 
     @DeleteMapping("/users/{id}")
-    public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") BigInt id){
+    public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") BigInteger id){
         try {
             userRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
