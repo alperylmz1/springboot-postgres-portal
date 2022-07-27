@@ -3,6 +3,7 @@ package com.alper.springbootsmaros.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.math.BigInteger;
 
 @Entity
 @Table(name = "Users")
@@ -10,7 +11,7 @@ public class User {
 
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO)
-    private BigInt id;
+    private BigInteger id;
 
     @Column(name = "email")
     private String email;
@@ -35,7 +36,7 @@ public class User {
     }
 
 
-    public User(BigInt id, String email, String name, String status, String role, Date createDate, String createUser) {
+    public User(BigInteger id, String email, String name, String status, String role, Date createDate, String createUser) {
         this.id = id;
         this.email = email;
         this.name = name;
@@ -47,11 +48,11 @@ public class User {
 
 
 
-    public BigInt getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(BigInt id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 
