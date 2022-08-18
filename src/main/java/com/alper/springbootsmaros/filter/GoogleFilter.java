@@ -46,18 +46,7 @@ public class GoogleFilter implements Filter {
         }
         else {
             try {
-        /*
-        PrintWriter out = servletResponse.getWriter();
-        */
 
-
-                //Enumeration<String> headerNames = req.getHeaderNames();
-
-
-                //System.out.println(servletRequest.getServerName());
-
-
-                //System.out.println(req.getHeader("Google-Token"));
 
 
                 GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), new GsonFactory())
@@ -68,11 +57,8 @@ public class GoogleFilter implements Filter {
                         .build();
 
 
-                //req.getHeader("Google-Token")
-                //String idTokenString = "ya29.A0AVA9y1s884vEX99sc_YLeqMUcsz16dZ8IyLSYO73wb6UjPHIDIBLzDIKUAzX4hXjpmET3LbY4lHyK72RW0z6vplRgGdQnv8FgtRnvoC4Ws7rzDz5J5Xy87sMF5upwgt1pK7zwKDDSCz1O3kKHEy5oIX6RKCmtgYUNnWUtBVEFTQVRBU0ZRRTY1ZHI4T0VGbTBhTEJoVXdJeURPUlBPZXVZZw0165";
 
-
-                //System.out.println("iki");
+                
                 System.out.println(servletRequest.getServerName());
                 Enumeration<String> headerNames = req.getHeaderNames();
                 System.out.println(req.getHeader("google-token"));
@@ -98,14 +84,6 @@ public class GoogleFilter implements Filter {
                 }
 
 
-
-
-        /*
-        int token = Integer.parseInt(req.getParameter("id"));
-        if(token>2205)
-            filterChain.doFilter(servletRequest , servletResponse);
-        else
-        */
 
                 filterChain.doFilter(servletRequest, servletResponse);
             } catch (Exception e) {
